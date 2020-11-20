@@ -25,7 +25,7 @@ $ corpus = ['I love working on ML stuff.'
           ,'I hate working on stuff that is boring and repetitive.'
           ,'I love working from home during COVID-19.']
 ```
-   * Use the **API Key** and **API Endpoint** you received while registering on the Developer Zone pane, as shown in the following code snippet:
+   * Use the **API Key** and **API Endpoint** you received while registering on the *Developer Zone* pane, as shown in the following code snippet:
 ```sh
 $ APIKey = 'Your_API_Key'
 $ base_url = "Your_URL_provided"
