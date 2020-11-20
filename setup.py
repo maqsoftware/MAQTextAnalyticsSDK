@@ -3,14 +3,14 @@ from distutils.core import setup
 setup(
   packages = ['MAQTextSDK','MAQTextSDK.models'],  
   name = 'MAQTextSDK',         
-  version = '0.2',      
+  version = '1.0',      
   license='MIT', 
   description = 'NLP based text processing SDK',
   long_description="For usage related concerns please check https://github.com/maqsoftware/MAQTextAnalyticsSDK/ or contact support@maqsoftware.com",
   author = 'MAQ',                  
   author_email = 'support@maqsoftware.com',    
   url = 'https://github.com/maqsoftware/MAQTextAnalyticsSDK',   
-  download_url = 'https://github.com/MAQ-Ravijit-Ramana/MAQTextAnalyticsSDK/archive/v_1.tar.gz',  
+  download_url = 'https://github.com/maqsoftware/MAQTextAnalyticsSDK/archive/v_1.tar.gz',  
   keywords = ['NLP', 'Text', 'Sentiment'], 
   install_requires=[          
     'msrest'
