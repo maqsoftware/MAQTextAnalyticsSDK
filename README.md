@@ -1,6 +1,7 @@
 ---
 # Text Analytics SDK Documentation
 by **MAQ SDK Team**
+
 [Privacy Policy][PP]
 ---
 ## Prerequisites
