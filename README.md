@@ -29,14 +29,14 @@ $ corpus = ['I love working on ML stuff.'
    * Use the **API Key** and **API Endpoint** you received while registering on the *Developer Zone* pane, as shown in the following code snippet:
 ```sh
 $ APIKey = 'Your_API_Key'
-$ base_url = "Your_URL_provided"
+$ base_url = "Your_API_Endpoint"
 ````
    * Import the SDK and pass the *Corpus* along with the **API Endpoint** and **API Key**, as shown in the following code snippet:
 ```sh
 $ import  MAQTextSDK.maq_text_analytics_linux as SentimentSDK
 $ sentimentClient = SentimentSDK.MAQTextAnalyticsLinux(base_url = base_url)
 
-$ response = sentimentClient.post_sentimentclassifier(API_Key = APIKey, data_input = corpus, raw = True)
+$ response = sentimentClient.post_sentimentclassifier(api_key = APIKey, data_input = corpus, raw = True)
 
 $ for document in response:
     print("Document:")
@@ -55,10 +55,11 @@ $ corpus = {"data": [
     {"id": "3", "text": "I love working from home in COVID-19."}
 ]}
 ```
-   * Input the **API Key**, **API Endpoint**, and **Headers** that you received when you registered on the Text Analytics Platform, as shown in the following code snippet:
+   * Input the **API Key**, **API Path** and **API Endpoint** that you received when you registered on the Text Analytics Platform, as shown in the following code snippet:
 ```sh
 $ APIKey = 'Your_API_Key'
-$ API_Endpoint = "Your_URL_provided"
+$ API_Endpoint = "Your_API_Endpoint"
+$ API_Path = "Your_API_Path"
 $ headers = {"APIKey": APIKey}
 ````
    * Import the Requests library and pass the *Corpus*, URL, and **Headers** into the Json parameter, as shown in the following code snippet:
@@ -67,7 +68,7 @@ $ import requests
 $ import  MAQMLSDK.sentiment_auth as SentimentSDK
 $ sentimentClient = SentimentSDK.SentimentAuth(base_url = base_url)
 
-$ response = requests.post(base_url + endpoint, headers=headers, json=corpus)
+$ response = requests.post(API_Endpoint + API_Path, headers=headers, json=corpus)
 $ sentiment = response.json()
 ````
 ## Limit Tracking in API
