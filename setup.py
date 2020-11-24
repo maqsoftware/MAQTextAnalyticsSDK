@@ -6,7 +6,11 @@ setup(
   version = '1.0',      
   license='MIT', 
   description = 'NLP based text processing SDK',
-  long_description="For usage related concerns please check https://github.com/maqsoftware/MAQTextAnalyticsSDK/ or contact support@maqsoftware.com",
+  long_description="""**Text Analytics SDK**\n
+  *MAQTextSDK* is a python package for natural language processing.\n
+  This SDK can be used for extracting sentiment value from textual data.\n
+  For usage related concerns please check https://github.com/maqsoftware/MAQTextAnalyticsSDK or contact support@maqsoftware.com\n
+  """,
   author = 'MAQ',                  
   author_email = 'support@maqsoftware.com',    
   url = 'https://github.com/maqsoftware/MAQTextAnalyticsSDK',   
