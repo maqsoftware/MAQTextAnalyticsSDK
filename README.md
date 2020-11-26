@@ -29,7 +29,7 @@ $ corpus = ['I love working on ML stuff.'
    * Use the **API Key** and **API Endpoint** you received while registering on the *Developer Zone* pane, as shown in the following code snippet:
 ```sh
 $ APIKey = 'Your_API_Key'
-$ base_url = "Your_API_Endpoint"
+$ APIEndpoint = "Your_API_Endpoint"
 ````
    * Import the SDK and pass the *Corpus* along with the **API Endpoint** and **API Key**, as shown in the following code snippet:
 ```sh
@@ -58,14 +58,14 @@ $ corpus = {"data": [
    * Input the **API Key** and **API Endpoint** that you received when you registered on the Text Analytics Platform, as shown in the following code snippet:
 ```sh
 $ APIKey = 'Your_API_Key'
-$ API_Endpoint = "Your_API_Endpoint"
+$ APIEndpoint = "Your_API_Endpoint"
 $ headers = {"APIKey": APIKey}
 ````
    * Import the Requests library and pass the *Corpus*, URL, and **Headers** into the Json parameter, as shown in the following code snippet:
 ```sh
 $ import requests
 
-$ response = requests.post(API_Endpoint + "/SentimentClassifier", headers=headers, json=corpus)
+$ response = requests.post(APIEndpoint + "/SentimentClassifier", headers=headers, json=corpus)
 $ sentiment = response.json()
 ````
 ## Limit Tracking in API
