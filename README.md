@@ -34,7 +34,7 @@ $ APIEndpoint = "Your_API_Endpoint"
    * Import the SDK and pass the *Corpus* along with the **API Endpoint** and **API Key**, as shown in the following code snippet:
 ```sh
 $ import  MAQTextSDK.maq_text_analytics_linux as SentimentSDK
-$ sentimentClient = SentimentSDK.MAQTextAnalyticsLinux(base_url = base_url)
+$ sentimentClient = SentimentSDK.MAQTextAnalyticsLinux(base_url = APIEndpoint)
 
 $ response = sentimentClient.post_sentimentclassifier(api_key = APIKey, data_input = corpus, raw = True)
 
