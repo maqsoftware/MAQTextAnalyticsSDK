@@ -1,6 +1,6 @@
 ---
 # Text Analytics SDK Documentation
-by **MAQ SDK Team**
+by **MAQ**
 
 [Privacy Policy][PP]
 ---
@@ -14,7 +14,7 @@ $ pip install MAQTextSDK
 #### 1. Register for the SDK
 You need an O365 Account to register.
    * Click [here][PlDb] to register using the *Free Trial* button in the *Developer Zone* pane. 
-   * Save the **API Endpoint**, **API Key**, and **Headers** you receive while registering on the *Developer Zone* pane.
+   * Save the **API Endpoint** and **API Key** you receive while registering on the *Developer Zone* pane.
 #### 2. Install the SDK
 ```sh
 $ pip install MAQTextSDK
@@ -28,7 +28,7 @@ $ corpus = ['I love working on ML stuff.'
 ```
    * Use the **API Key** and **API Endpoint** you received while registering on the *Developer Zone* pane, as shown in the following code snippet:
 ```sh
-$ APIKey = 'Your_API_Key'
+$ APIKey = "Your_API_Key"
 $ APIEndpoint = "Your_API_Endpoint"
 ````
    * Import the SDK and pass the *Corpus* along with the **API Endpoint** and **API Key**, as shown in the following code snippet:
@@ -57,11 +57,11 @@ $ corpus = {"data": [
 ```
    * Input the **API Key** and **API Endpoint** that you received when you registered on the Text Analytics Platform, as shown in the following code snippet:
 ```sh
-$ APIKey = 'Your_API_Key'
+$ APIKey = "Your_API_Key"
 $ APIEndpoint = "Your_API_Endpoint"
 $ headers = {"APIKey": APIKey}
 ````
-   * Import the Requests library and pass the *Corpus*, URL, and **Headers** into the Json parameter, as shown in the following code snippet:
+   * Import the Requests library and pass the *Corpus*, **API Endpoint**, and **Headers** into the Json parameter, as shown in the following code snippet:
 ```sh
 $ import requests
 
@@ -69,7 +69,7 @@ $ response = requests.post(APIEndpoint + "/SentimentClassifier", headers=headers
 $ sentiment = response.json()
 ````
 ## Limit Tracking in API
-In the free trial subscription, the API Key has a default quota of 1000 batch calls. In a single batch call, you can send maximum 25 documents. Each batch call, irrespective of the how many documents it processes, counts as a single call.
+In the free trial subscription, the API Key has a default quota of 500 batch calls. In a single batch call, you can send maximum 25 documents. Each batch call, irrespective of the how many documents it processes, counts as a single call.
 ## FAQs
 
 1. **What happens when my API Key expires?**
