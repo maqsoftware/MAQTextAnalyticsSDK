@@ -65,7 +65,7 @@ $ headers = {"APIKey": APIKey}
 ```sh
 $ import requests
 
-$ response = requests.post(APIEndpoint + "/SentimentClassifier", headers=headers, json=corpus)
+$ response = requests.post(APIEndpoint + "/SentimentClassifier", headers = headers, json = corpus)
 $ sentiment = response.json()
 ````
 ## Limit Tracking in API
