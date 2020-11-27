@@ -99,8 +99,12 @@ class MAQTextAnalyticsLinux(SDKClient):
         response = self._client.send(request, stream=False, **operation_config)
 
         if response.status_code not in [200]:
-            response.reason = (json.loads(response.text)['message'])
-            raise HttpOperationError(self._deserialize, response)
+            if 'errors' in json.loads(response.text):
+                response.reason = (json.loads(response.text)['errors'][0]['message'])
+                raise HttpOperationError(self._deserialize, response)
+            else:
+                response.reason = (json.loads(response.text)['message'])
+                raise HttpOperationError(self._deserialize, response)
 
         deserialized = None
 
