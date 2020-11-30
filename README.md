@@ -1,6 +1,6 @@
 ---
 # Text Analytics SDK Documentation
-by **MAQ**
+by **MAQ Software**
 
 [Privacy Policy][PP]
 ---
