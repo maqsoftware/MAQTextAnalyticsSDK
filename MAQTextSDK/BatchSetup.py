@@ -18,5 +18,5 @@ class BatchSetup():
             dataDict['id'] = str(idx)
             dataDict['text'] = data
             dataList.append(dataDict)
-        dataInput['data'] = dataList
-        return dataInput
+            dataInput['data'] = dataList
+            return dataInput
