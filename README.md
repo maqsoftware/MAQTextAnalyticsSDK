@@ -74,7 +74,7 @@ In the free trial subscription, the API Key has a default quota of 500 batch cal
 ## Build the SDK
 To build the SDK from scratch. Please use *MAQTextAnalyticsLinux.swagger.json* file and build it using *[autorest][autorestLink]*. To build the SDK package please run the following code snippet:
 ```sh
-$ autorest --input-file="https://github.com/maqsoftware/MAQTextAnalyticsSDK/blob/main/MAQTextAnalyticsLinux.swagger.json" --python --output-folder="Path/to/SDKFolder"
+$ autorest --input-file="https://raw.githubusercontent.com/maqsoftware/MAQTextAnalyticsSDK/main/MAQTextAnalyticsLinux.swagger.json" --python --output-folder="Path/to/SDK"
 ````
 ## FAQs
 
