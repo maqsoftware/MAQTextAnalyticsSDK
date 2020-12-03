@@ -7,10 +7,10 @@ class BatchSetup():
         self.data = data
     
     def makeBody(self):
-    """
-    makeBody
-    :return: dict of user corpus
-    """
+        """
+        makeBody
+        :return: dict of user corpus
+        """
         dataList = []
         dataInput = dict()
         for idx,data in enumerate(self.data):
@@ -18,5 +18,5 @@ class BatchSetup():
             dataDict['id'] = str(idx)
             dataDict['text'] = data
             dataList.append(dataDict)
-            dataInput['data'] = dataList
-            return dataInput
+        dataInput['data'] = dataList
+        return dataInput
