@@ -36,7 +36,7 @@ $ APIEndpoint = "Your_API_Endpoint"
 $ import  MAQTextSDK.maq_text_analytics_linux as SentimentSDK
 $ sentimentClient = SentimentSDK.MAQTextAnalyticsLinux(base_url = APIEndpoint)
 
-$ response = sentimentClient.post_sentimentclassifier(api_key = APIKey, data_input = corpus, raw = True)
+$ response = sentimentClient.post_sentimentclassifier(api_key = APIKey, data_input = corpus)
 
 $ for document in response:
     print("Document:")
