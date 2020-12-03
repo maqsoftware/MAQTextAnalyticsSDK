@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
   packages = ['MAQTextSDK','MAQTextSDK.models'],  
   name = 'MAQTextSDK',         
-  version = '1.0',      
+  version = '0.4',      
   license='MIT', 
   description = 'NLP based text processing SDK',
   long_description="""**Text Analytics SDK**\n
