@@ -70,6 +70,12 @@ $ sentiment = response.json()
 ````
 ## Limit Tracking in API
 In the free trial subscription, the API Key has a default quota of 500 batch calls. In a single batch call, you can send maximum 25 documents. Each batch call, irrespective of the how many documents it processes, counts as a single call.
+
+## Build the SDK
+To build the SDK from scratch. Please use *MAQTextAnalyticsLinux.swagger.json* file and build it using *[autorest][autorestLink]*. To build the SDK package please run the following code snippet:
+```sh
+$ autorest --input-file="https://github.com/maqsoftware/MAQTextAnalyticsSDK/blob/main/MAQTextAnalyticsLinux.swagger.json" --python --output-folder="Path/to/SDKFolder"
+````
 ## FAQs
 
 1. **What happens when my API Key expires?**
@@ -85,3 +91,4 @@ You can send maximum 25 documents in a single batch call. Check that you are not
 
 [PlDb]: <https://textanalytics.maqsoftware.com/>
 [PP]: <https://maqsoftware.com/privacystatement>
+[autorestLink]: <https://github.com/Azure/autorest>
