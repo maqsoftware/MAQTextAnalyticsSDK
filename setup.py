@@ -14,7 +14,7 @@ setup(
   author = 'MAQ',                  
   author_email = 'support@maqsoftware.com',    
   url = 'https://github.com/maqsoftware/MAQTextAnalyticsSDK',   
-  download_url = 'https://github.com/maqsoftware/MAQTextAnalyticsSDK/archive/1.0.tar.gz',  
+  download_url = 'https://github.com/maqsoftware/MAQTextAnalyticsSDK/archive/v1.0.tar.gz',  
   keywords = ['NLP', 'Text', 'Sentiment'], 
   install_requires=[          
     'msrest'
