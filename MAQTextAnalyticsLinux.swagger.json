@@ -1,0 +1,126 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "MAQTextAnalyticsLinux",
+        "version": "1.0",
+        "description": "Import from \"MAQTextAnalyticsLinux\" Function App"
+    },
+    "host": "maqtextnalyticssdk.azure-api.net",
+    "basePath": "/text",
+    "schemes": [
+        "https"
+    ],
+    "securityDefinitions": {
+        "apiKeyHeader": {
+            "type": "apiKey",
+            "name": "Ocp-Apim-Subscription-Key",
+            "in": "header"
+        },
+        "apiKeyQuery": {
+            "type": "apiKey",
+            "name": "subscription-key",
+            "in": "query"
+        }
+    },
+    "security": [
+        {
+            "apiKeyHeader": []
+        },
+        {
+            "apiKeyQuery": []
+        }
+    ],
+    "paths": {
+        "/SentimentClassifier": {
+            "post": {
+                "operationId": "post-sentimentclassifier",
+                "summary": "SentimentClassifier",
+                "parameters": [
+                    {
+                        "name": "APIKey",
+                        "in": "header",
+                        "description": "JWT Key",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "dataInput",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/DataInput"
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseBody"
+                        },
+                        "examples": {
+                            "application/json": "[\r\n    {\r\n        \"id\": \"string\",\r\n        \"sentiment\": 0.1537915187102612\r\n    }\r\n]"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "DataInput": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "required": [
+                            "id",
+                            "text"
+                        ],
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            },
+                            "text": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "example": {
+                "data": [
+                    {
+                        "id": "string",
+                        "text": "string"
+                    }
+                ]
+            }
+        },
+        "ResponseBody": {
+            "type": "array",
+            "items": {
+                "required": [
+                    "id",
+                    "sentiment"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "sentiment": {
+                        "type": "number"
+                    }
+                }
+            }
+        }
+    },
+    "tags": []
+}

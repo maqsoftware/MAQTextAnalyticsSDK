@@ -36,7 +36,7 @@ $ APIEndpoint = "Your_API_Endpoint"
 $ import  MAQTextSDK.maq_text_analytics_linux as SentimentSDK
 $ sentimentClient = SentimentSDK.MAQTextAnalyticsLinux(base_url = APIEndpoint)
 
-$ response = sentimentClient.post_sentimentclassifier(api_key = APIKey, data_input = corpus, raw = True)
+$ response = sentimentClient.post_sentimentclassifier(api_key = APIKey, data_input = corpus)
 
 $ for document in response:
     print("Document:")
@@ -70,6 +70,14 @@ $ sentiment = response.json()
 ````
 ## Limit Tracking in API
 In the free trial subscription, the API Key has a default quota of 500 batch calls. In a single batch call, you can send maximum 25 documents. Each batch call, irrespective of the how many documents it processes, counts as a single call.
+
+## Build the SDK
+To build the SDK from scratch. Please use *MAQTextAnalyticsLinux.swagger.json* file and build it using *[autorest][autorestLink]*. To build the SDK package please run the following code snippet:
+```sh
+$ git clone https://github.com/maqsoftware/MAQTextAnalyticsSDK.git
+$ npm install -g autorest
+$ autorest --input-file="MAQTextAnalyticsSDK/MAQTextAnalyticsLinux.swagger.json" --python --output-folder="TextAnalyticsSDK"
+````
 ## FAQs
 
 1. **What happens when my API Key expires?**
@@ -83,5 +91,6 @@ You can re-register for a free trial subscription by clicking [here][PlDb]. For 
 You can send maximum 25 documents in a single batch call. Check that you are not trying to send more.
 
 
-[PlDb]: <https://textanalytics.maqsoftware.com/>
+[PlDb]: https://maqtextanalytics.azurewebsites.net/#/DevelopersZone
 [PP]: <https://maqsoftware.com/privacystatement>
+[autorestLink]: <https://github.com/Azure/autorest>

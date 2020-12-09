@@ -10,7 +10,7 @@ from msrest import Configuration, Serializer, Deserializer
 from .version import VERSION
 from msrest.pipeline import ClientRawResponse
 from msrest.exceptions import HttpOperationError
-from .customLogic import BatchSetup 
+from .BatchSetup import BatchSetup
 from . import models
 import json
 
