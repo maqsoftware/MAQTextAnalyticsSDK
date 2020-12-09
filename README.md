@@ -91,6 +91,6 @@ You can re-register for a free trial subscription by clicking [here][PlDb]. For 
 You can send maximum 25 documents in a single batch call. Check that you are not trying to send more.
 
 
-[PlDb]: <https://textanalytics.maqsoftware.com/>
+[PlDb]: https://maqtextanalytics.azurewebsites.net/#/DevelopersZone
 [PP]: <https://maqsoftware.com/privacystatement>
 [autorestLink]: <https://github.com/Azure/autorest>
