@@ -1,11 +1,12 @@
-class BatchSetup():
+class BatchSetup:
     """
     Logic for mapping list to expected input json
     :param list data: User text corpus
     """
-    def __init__(self,data):
+
+    def __init__(self, data):
         self.data = data
-    
+
     def makeBody(self):
         """
         makeBody
@@ -13,10 +14,10 @@ class BatchSetup():
         """
         dataList = []
         dataInput = dict()
-        for idx,data in enumerate(self.data):
+        for idx, data in enumerate(self.data):
             dataDict = dict()
-            dataDict['id'] = str(idx)
-            dataDict['text'] = data
+            dataDict["id"] = str(idx)
+            dataDict["text"] = data
             dataList.append(dataDict)
-        dataInput['data'] = dataList
+        dataInput["data"] = dataList
         return dataInput
