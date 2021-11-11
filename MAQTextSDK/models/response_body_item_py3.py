@@ -20,13 +20,13 @@ class ResponseBodyItem(Model):
     """
 
     _validation = {
-        'id': {'required': True},
-        'sentiment': {'required': True},
+        "id": {"required": True},
+        "sentiment": {"required": True},
     }
 
     _attribute_map = {
-        'id': {'key': 'id', 'type': 'str'},
-        'sentiment': {'key': 'sentiment', 'type': 'float'},
+        "id": {"key": "id", "type": "str"},
+        "sentiment": {"key": "sentiment", "type": "float"},
     }
 
     def __init__(self, *, id: str, sentiment: float, **kwargs) -> None:

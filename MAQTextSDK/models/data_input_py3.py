@@ -16,7 +16,7 @@ class DataInput(Model):
     """
 
     _attribute_map = {
-        'data': {'key': 'data', 'type': '[DataInputDataItem]'},
+        "data": {"key": "data", "type": "[DataInputDataItem]"},
     }
 
     def __init__(self, *, data=None, **kwargs) -> None:
