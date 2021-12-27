@@ -103,10 +103,6 @@ pii_input["data"] = "Parker Doe has repaid all of their loans as of 2020-04-25. 
 #Set the list of entities to be removed
 pii_input["entity_list"] = ["PERSON", "US_SSN", "PHONE_NUMBER"]
 
-Attempt | #1 | #2 | 
---- | --- | --- | 
-Seconds | 301 | 283 |
-
 ```
    * Use the **API Key** and **API Endpoint** you received while registering on the *Developer Zone* pane, as shown in the following code snippet:
 ```sh
@@ -117,7 +113,7 @@ $ APIEndpoint = "Your_API_Endpoint"
 ```sh
 $ import  MAQTextSDK.maq_text_analytics_linux as TextSDK
 $ textClient = TextSDK.MAQTextAnalyticsLinux(base_url = APIEndpoint)
-
+$ response = textClient.post_piiscrubber(api_key = APIKey, data_input = pii_input.copy())
 $ print("Original Text: ", pii_input['data'])
   print("After PII Scrubbing: ", response['scrubbed_text'])
 #Original Text:  Parker Doe has repaid all of their loans as of 2020-04-25. Their SSN is 859-98-0987. To contact them, use their phone number #555-555-5555. They are originally from Brazil
