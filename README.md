@@ -105,7 +105,19 @@ pii_input["entity_list"] = ["PERSON", "US_SSN", "PHONE_NUMBER"]
 ```
 Entity Name | Action 
 --- | --- 
-Seconds | 301
+PERSON | 301
+CREDIT_CARD | 301
+DATE_TIME | 301
+DOMAIN_NAME | 301
+EMAIL_ADDRESS | 301
+IBAN_CODE | 301
+IP_ADDRESS | 301
+LOCATION | 301
+PHONE_NUMBER | 301
+US_BANK_NUMBER | 301
+US_DRIVER_LICENSE | 301
+US_PASSPORT | 301
+US_SSN | 301
 
    * Use the **API Key** and **API Endpoint** you received while registering on the *Developer Zone* pane, as shown in the following code snippet:
 ```sh
