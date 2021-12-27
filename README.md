@@ -103,6 +103,8 @@ pii_input["data"] = "Parker Doe has repaid all of their loans as of 2020-04-25. 
 pii_input["entity_list"] = ["PERSON", "US_SSN", "PHONE_NUMBER"]
 
 ```
+**List of Supported Entities:**
+
 Entity Name | Action 
 --- | --- 
 PERSON | A full person name, which can include first names, middle names or initials, and last names.
