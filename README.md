@@ -74,7 +74,7 @@ $ APIEndpoint = "Your_API_Endpoint"
 ```sh
 $ import  MAQTextSDK.maq_text_analytics_linux as TextSDK
 $ textClient = TextSDK.MAQTextAnalyticsLinux(base_url = APIEndpoint)
-$ response = textClient.post_keyphrase_extractor(api_key = APIKey, data_input =keyphrase_input)
+$ response = textClient.post_keyphrase_extractor(api_key = APIKey, data_input = keyphrase_input)
 
 $ response_df = pd.DataFrame(response, columns = ['KeyPhrase','Score','Similar'])
 
