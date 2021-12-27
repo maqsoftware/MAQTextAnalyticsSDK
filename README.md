@@ -81,16 +81,16 @@ $ response = textClient.post_keyphrase_extractor(api_key = APIKey, data_input = 
 $ response_df = pd.DataFrame(response, columns = ['KeyPhrase','Score','Similar'])
 
 #KeyPhrase	Score	Similar
-#0	structural social capital	1.000000	[cognitive social capital]
-#1	innovation	0.754714	[advancement]
-#2	research network assets	0.586890	[information network assets, business network ...
-#3	participation assets	0.575738	[]
-#4	reciprocal trust	0.564874	[]
-#5	explanatory variable	0.390424	[traditional explanatory variables]
-#6	empirical investigations	0.355306	[study]
-#7	many different forms	0.264404	[other forms]
-#8	dominating view	0.207086	[]
-#9	paper	0.121013	[]
+#0 structural social capital	1.000000	[cognitive social capital]
+#1 innovation	0.754714	[advancement]
+#2 research network assets	0.586890	[information network assets, business network ...
+#3 participation assets	0.575738	[]
+#4 reciprocal trust	0.564874	[]
+#5 explanatory variable	0.390424	[traditional explanatory variables]
+#6 empirical investigations	0.355306	[study]
+#7 many different forms	0.264404	[other forms]
+#8 dominating view	0.207086	[]
+#9 paper	0.121013	[]
 ````
 #### 5. Using the SDK for PII Scrubber
    * Load the *Corpus* you plan to use in a *Dict* format, as shown in the following code snippet:
