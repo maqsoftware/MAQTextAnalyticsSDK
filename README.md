@@ -158,8 +158,17 @@ $ import requests
 $ response = requests.post(APIEndpoint + "/SentimentClassifier", headers = headers, json = corpus)
 $ sentiment = response.json()
 ````
+
+ * Import the Requests library and pass the *Corpus*, **API Endpoint**, and **Headers** into the Json parameter, as shown in the following code snippet for Key Phrase Extraction:
+```sh
+$ import requests
+
+$ response = requests.post(APIEndpoint + "/KeyPhrase", headers = headers, json = keyphrase_input)
+$ response_df = pd.DataFrame(response.json(), columns = ['KeyPhrase','Score','Similar'])
+````
+
 ## Limit Tracking in API
-In the free trial subscription, the API Key has a default quota of 500 batch calls. In a single batch call, you can send maximum 25 documents. Each batch call, irrespective of the how many documents it processes, counts as a single call.
+In the free trial subscription, the API Key has a default quota of 500 batch calls. In a single batch call for Sentiment Analysis, you can send maximum 25 documents. Each batch call, irrespective of the how many documents it processes, counts as a single call. For Key Phrase Extraction and PII Scrubber each batch call can send maximum 1 document. 
 
 ## Build the SDK
 To build the SDK from scratch. Please use *MAQTextAnalyticsLinux.swagger.json* file and build it using *[autorest][autorestLink]*. To build the SDK package please run the following code snippet:
@@ -178,7 +187,7 @@ You can re-register for a free trial subscription by clicking [here][PlDb]. For 
     You will get an API Limit exceeded error when you try to use the SDK. You can visit the *Developer Zone* pane and generate a new API Key. For a premium service, you can connect with us at support@maqsoftware.com
 
 3.	**Why I am getting batch size error?**
-You can send maximum 25 documents in a single batch call. Check that you are not trying to send more.
+You can send maximum 25 documents in a single batch call for Sentiment Analysis. For Key Phrase Extraction and PII Scrubber, maximum one document can be sent in single batch call. Check that you are not trying to send more.
 
 
 [PlDb]: https://maqtextanalytics.azurewebsites.net/#/DevelopersZone
