@@ -19,7 +19,7 @@ You need an O365 Account to register.
 ```sh
 $ pip install MAQTextSDK
 ```
-#### 3. Using the SDK for Sentiment Analysis
+#### 3. Using the SDK for Sentiment Analysis (Refer to Demo [here](Samples/SentimentDemo.ipynb))
    * Load the *Corpus* you plan to use in a *List* format, as shown in the following code snippet:
 ```sh
 $ corpus = ['I love working on ML stuff.'
@@ -45,7 +45,7 @@ $ for document in response:
     print(document['sentiment'])
     print()
 ````
-#### 4. Using the SDK for Key Phrase Extraction
+#### 4. Using the SDK for Key Phrase Extraction (Refer to Demo [here](Samples/KeyPhrasesDemo.ipynb))
    * Load the *Corpus* you plan to use in a *Dict* format, as shown in the following code snippet:
 ```sh
 $ #Load Text
@@ -92,7 +92,7 @@ $ response_df = pd.DataFrame(response, columns = ['KeyPhrase','Score','Similar']
 #8 dominating view	0.207086	[]
 #9 paper	0.121013	[]
 ````
-#### 5. Using the SDK for PII Scrubber
+#### 5. Using the SDK for PII Scrubber (Refer to Demo [here](Samples/PIIScrubberDemo.ipynb))
 ##### Note: PII Scrubber is powered by [presidio]
 
    * Load the *Corpus* you plan to use in a *Dict* format, as shown in the following code snippet:
