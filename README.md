@@ -45,7 +45,7 @@ $ for document in response:
     print(document['sentiment'])
     print()
 ````
-#### 3. Using the SDK for Key Phrase Extraction
+#### 4. Using the SDK for Key Phrase Extraction
    * Load the *Corpus* you plan to use in a *Dict* format, as shown in the following code snippet:
 ```sh
 $ #Load Text
@@ -59,10 +59,12 @@ keyphrase_input["keyphrases_count"] = 10
 
 #More Score, more different/diverse keyphrases are generated
 #Less Score, more duplicate keyphrases are generated
+#Value of Diversity Threshold can be between 0 and 1
 keyphrase_input["diversity_threshold"] = 0.52
 
 #Similarity threshold for Alias/Similar Keyphrase with Top Key Phrase [Similar Column in Output]
 #More The Value, More accurate keyphrases are found with top key-phrase [Similar Column in Output]
+#Value of Alias Threshold can be between 0 and 1
 keyphrase_input["alias_threshold"] = 0.65
 ```
    * Use the **API Key** and **API Endpoint** you received while registering on the *Developer Zone* pane, as shown in the following code snippet:
@@ -74,6 +76,7 @@ $ APIEndpoint = "Your_API_Endpoint"
 ```sh
 $ import  MAQTextSDK.maq_text_analytics_linux as TextSDK
 $ textClient = TextSDK.MAQTextAnalyticsLinux(base_url = APIEndpoint)
+#Each POST Call can only have one text input
 $ response = textClient.post_keyphrase_extractor(api_key = APIKey, data_input = keyphrase_input)
 
 $ response_df = pd.DataFrame(response, columns = ['KeyPhrase','Score','Similar'])
@@ -90,7 +93,36 @@ $ response_df = pd.DataFrame(response, columns = ['KeyPhrase','Score','Similar']
 #8	dominating view	0.207086	[]
 #9	paper	0.121013	[]
 ````
+#### 5. Using the SDK for PII Scrubber
+   * Load the *Corpus* you plan to use in a *Dict* format, as shown in the following code snippet:
+```sh
+$ #Load Text into dict
+pii_input = dict()
+pii_input["data"] = "Parker Doe has repaid all of their loans as of 2020-04-25. Their SSN is 859-98-0987. To contact them, use their phone number 555-555-5555. They are originally from Brazil"
 
+#Set the list of entities to be removed
+pii_input["entity_list"] = ["PERSON", "US_SSN", "PHONE_NUMBER"]
+
+Attempt | #1 | #2 | 
+--- | --- | --- | 
+Seconds | 301 | 283 |
+
+```
+   * Use the **API Key** and **API Endpoint** you received while registering on the *Developer Zone* pane, as shown in the following code snippet:
+```sh
+$ APIKey = "Your_API_Key"
+$ APIEndpoint = "Your_API_Endpoint"
+````
+   * Import the SDK and pass the *Corpus* along with the **API Endpoint** and **API Key**, as shown in the following code snippet:
+```sh
+$ import  MAQTextSDK.maq_text_analytics_linux as TextSDK
+$ textClient = TextSDK.MAQTextAnalyticsLinux(base_url = APIEndpoint)
+
+$ print("Original Text: ", pii_input['data'])
+  print("After PII Scrubbing: ", response['scrubbed_text'])
+#Original Text:  Parker Doe has repaid all of their loans as of 2020-04-25. Their SSN is 859-98-0987. To contact them, use their phone number #555-555-5555. They are originally from Brazil
+#After PII Scrubbing:  <PERSON> has repaid all of their loans as of 2020-04-25. Their SSN is <US_SSN>. To contact them, use their phone number #<PHONE_NUMBER>. They are originally from Brazil
+````
 ## Using the Requests Package
    * Load the *Corpus* you plan to use in a Json format, as shown in the following code snippet:
 ```sh
