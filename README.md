@@ -105,19 +105,19 @@ pii_input["entity_list"] = ["PERSON", "US_SSN", "PHONE_NUMBER"]
 ```
 Entity Name | Action 
 --- | --- 
-PERSON | 301
-CREDIT_CARD | 301
-DATE_TIME | 301
-DOMAIN_NAME | 301
-EMAIL_ADDRESS | 301
-IBAN_CODE | 301
-IP_ADDRESS | 301
-LOCATION | 301
-PHONE_NUMBER | 301
-US_BANK_NUMBER | 301
-US_DRIVER_LICENSE | 301
-US_PASSPORT | 301
-US_SSN | 301
+PERSON | A full person name, which can include first names, middle names or initials, and last names.
+CREDIT_CARD | A credit card number is between 12 to 19 digits. https://en.wikipedia.org/wiki/Payment_card_number
+DATE_TIME | Absolute or relative dates or periods or times smaller than a day.
+DOMAIN_NAME | A domain name as defined by the DNS standard.
+EMAIL_ADDRESS | An email address identifies an email box to which email messages are delivered
+IBAN_CODE | The International Bank Account Number (IBAN) is an internationally agreed system of identifying bank accounts across national borders to facilitate the communication and processing of cross border transactions with a reduced risk of transcription errors.
+IP_ADDRESS | An Internet Protocol (IP) address (either IPv4 or IPv6).
+LOCATION | Name of politically or geographically defined location (cities, provinces, countries, international regions, bodies of water, mountains
+PHONE_NUMBER | A telephone number
+US_BANK_NUMBER | A US bank account number is between 8 to 17 digits.
+US_DRIVER_LICENSE | A US driver license according to https://ntsi.com/drivers-license-format/
+US_PASSPORT | A US passport number with 9 digits.
+US_SSN | A US Social Security Number (SSN) with 9 digits.
 
    * Use the **API Key** and **API Endpoint** you received while registering on the *Developer Zone* pane, as shown in the following code snippet:
 ```sh
