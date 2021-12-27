@@ -103,9 +103,9 @@ pii_input["data"] = "Parker Doe has repaid all of their loans as of 2020-04-25. 
 pii_input["entity_list"] = ["PERSON", "US_SSN", "PHONE_NUMBER"]
 
 ```
-Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
-Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269
+Entity Name | Action 
+--- | --- 
+Seconds | 301
 
    * Use the **API Key** and **API Endpoint** you received while registering on the *Developer Zone* pane, as shown in the following code snippet:
 ```sh
