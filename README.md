@@ -19,7 +19,7 @@ You need an O365 Account to register.
 ```sh
 $ pip install MAQTextSDK
 ```
-#### 3. Using the SDK
+#### 3. Using the SDK for Sentiment Analysis
    * Load the *Corpus* you plan to use in a *List* format, as shown in the following code snippet:
 ```sh
 $ corpus = ['I love working on ML stuff.'
@@ -44,6 +44,51 @@ $ for document in response:
     print("Sentiment:")
     print(document['sentiment'])
     print()
+````
+#### 3. Using the SDK for Key Phrase Extraction
+   * Load the *Corpus* you plan to use in a *Dict* format, as shown in the following code snippet:
+```sh
+$ #Load Text
+keyphrase_input = dict()
+
+#Set Text
+keyphrase_input["text"] = "Does social capital determine innovation ? To what extent? This paper deals with two questions: Does social capital determine innovation in manufacturing firms?"
+
+#Top Number Of Keyphrases
+keyphrase_input["keyphrases_count"] = 10
+
+#More Score, more different/diverse keyphrases are generated
+#Less Score, more duplicate keyphrases are generated
+keyphrase_input["diversity_threshold"] = 0.52
+
+#Similarity threshold for Alias/Similar Keyphrase with Top Key Phrase [Similar Column in Output]
+#More The Value, More accurate keyphrases are found with top key-phrase [Similar Column in Output]
+keyphrase_input["alias_threshold"] = 0.65
+```
+   * Use the **API Key** and **API Endpoint** you received while registering on the *Developer Zone* pane, as shown in the following code snippet:
+```sh
+$ APIKey = "Your_API_Key"
+$ APIEndpoint = "Your_API_Endpoint"
+````
+   * Import the SDK and pass the *Corpus* along with the **API Endpoint** and **API Key**, as shown in the following code snippet:
+```sh
+$ import  MAQTextSDK.maq_text_analytics_linux as TextSDK
+$ textClient = TextSDK.MAQTextAnalyticsLinux(base_url = APIEndpoint)
+$ response = textClient.post_keyphrase_extractor(api_key = APIKey, data_input =keyphrase_input)
+
+$ response_df = pd.DataFrame(response, columns = ['KeyPhrase','Score','Similar'])
+
+#KeyPhrase	Score	Similar
+#0	structural social capital	1.000000	[cognitive social capital]
+#1	innovation	0.754714	[advancement]
+#2	research network assets	0.586890	[information network assets, business network ...
+#3	participation assets	0.575738	[]
+#4	reciprocal trust	0.564874	[]
+#5	explanatory variable	0.390424	[traditional explanatory variables]
+#6	empirical investigations	0.355306	[study]
+#7	many different forms	0.264404	[other forms]
+#8	dominating view	0.207086	[]
+#9	paper	0.121013	[]
 ````
 
 ## Using the Requests Package
