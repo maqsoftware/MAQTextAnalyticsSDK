@@ -93,6 +93,8 @@ $ response_df = pd.DataFrame(response, columns = ['KeyPhrase','Score','Similar']
 #9 paper	0.121013	[]
 ````
 #### 5. Using the SDK for PII Scrubber
+##### Note: PII Scrubber is powered by [presidio]
+
    * Load the *Corpus* you plan to use in a *Dict* format, as shown in the following code snippet:
 ```sh
 $ #Load Text into dict
@@ -177,6 +179,7 @@ $ git clone https://github.com/maqsoftware/MAQTextAnalyticsSDK.git
 $ npm install -g autorest
 $ autorest --input-file="MAQTextAnalyticsSDK/MAQTextAnalyticsLinux.swagger.json" --python --output-folder="TextAnalyticsSDK"
 ````
+
 ## FAQs
 
 1. **What happens when my API Key expires?**
@@ -189,7 +192,7 @@ You can re-register for a free trial subscription by clicking [here][PlDb]. For 
 3.	**Why I am getting batch size error?**
 You can send maximum 25 documents in a single batch call for Sentiment Analysis. For Key Phrase Extraction and PII Scrubber, maximum one document can be sent in single batch call. Check that you are not trying to send more.
 
-
+[presidio]: https://github.com/microsoft/presidio/
 [PlDb]: https://maqtextanalytics.azurewebsites.net/#/DevelopersZone
 [PP]: <https://maqsoftware.com/privacystatement>
 [autorestLink]: <https://github.com/Azure/autorest>
