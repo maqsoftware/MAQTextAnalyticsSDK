@@ -169,6 +169,142 @@ $ response = requests.post(APIEndpoint + "/KeyPhrase", headers = headers, json =
 $ response_df = pd.DataFrame(response.json(), columns = ['KeyPhrase','Score','Similar'])
 ````
 
+## Use NLP capabilities in Power BI
+### 1. Prerequisites
+1. API Endpoint and API Key from step 1 in [Getting Started with SDK](#getting-started-with-sdk)
+2. Load data with text-based column in Power BI desktop
+
+### 2. Create a parameter
+1. Go to Power Query editor by right clicking on any table in your Power BI report and selecting **Edit query**
+2. Select the **New Parameter** option from the dropdown menu of **Manage Parameters** in the **Home** tab
+3. Name the parameter as **API Key**
+4. Check the required option to make the API Key a required parameters
+5. Select **Text** in **Type** dropdown
+6. Enter your **API Key** in the **Current Value** text-box and click on OK
+
+### 3. Define Custom Function
+In Power BI Desktop, make sure you're still in the Query Editor window. If you aren't, select the Home ribbon, and in the **External data** group, click **Edit Queries**.
+
+Now, in the **Home** ribbon, in the **New Query** group, open the **New Source** drop-down menu and select **Blank Query**.
+
+A new query, initially named `Query1`, appears in the Queries list. Double-click this entry and name it `AnalyzeSentiment`.
+
+Now, in the **Home** ribbon, in the **Query** group, click **Advanced Editor** to open the Advanced Editor window. Delete the code that's already in that window and paste in the following code.
+
+   1. Analyze Sentiment
+      ```FSharp
+      // Returns sentiment score of the input text
+      (endpoint as text, text as text) as number => let
+
+         // Use first 5000 characters from the input text
+         jsonText = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
+         
+         // Build JSON body as required by the endpoint
+         jsonBody = "{ ""data"": [ { ""id"": ""0"", ""text"": " & jsonText & " } ] }",
+         
+         // Convert JSON body to binary content
+         bytesBody = Text.ToBinary(jsonBody),
+         
+         // Create request header using API Key
+         headers = [#"APIKey" = #"API Key"],
+
+         // Invoke REST API using endpoint, header and conte
+         bytesResponse = Web.Contents(endpoint, [Headers=headers, Content=bytesBody]),
+         
+         // Convert to JSON response
+         jsonResponse = Json.Document(bytesResponse),
+
+         // Store sentiment score from the JSON response
+         sentimentScore = jsonResponse{0}[sentiment]
+
+      in sentimentScore
+      ```
+
+   2. Extract Key Phrase
+      ```FSharp
+      // Returns key phrases from the text in a comma-separated list
+      (endpoint as text, text as text, keyphraseCount as number, diversityThreshold as number, aliasThreshold as number) as text => let
+         
+         // Use first 5000 characters from the input text
+         jsonText = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
+         
+         // Build JSON body as required by the endpoint
+         jsonBody = "{ ""text"": " & jsonText & ", ""keyphrases_count"": " & Number.ToText(keyphraseCount) & ", ""diversity_threshold"": " & Number.ToText(diversityThreshold) & ", ""alias_threshold"": " & Number.ToText(aliasThreshold) & "}",
+         
+         // Convert JSON body to binary content
+         bytesBody = Text.ToBinary(jsonBody),
+         
+         // Create request header using API Key
+         headers = [#"APIKey" = #"API Key"],
+
+         // Invoke REST API using endpoint, header and conte
+         bytesResponse = Web.Contents(endpoint, [Headers=headers, Content=bytesBody]),
+         
+         // Convert to JSON response
+         jsonResponse = Json.Document(bytesResponse),
+         
+         // Extract KeyPhrase from array of documents and create a list of Key Phrases
+         keyphraseList = List.Transform(jsonResponse, each _[KeyPhrase]),
+         
+         // Store KeyPhrase as comma separated text
+         keyphrases = Text.Combine(keyphraseList, ", ")
+         
+      in keyphrases
+      ```
+
+   3. Scrub PII Data
+      ```FSharp
+      // Scrubs PII data from the input text
+      (endpoint as text, text as text, entityList as text) as text => let
+
+         // Use first 5000 characters from the input text
+         jsonText = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
+         
+         // Build JSON body as required by the endpoint
+         jsonBody = "{ ""data"": " & jsonText & ", ""entity_list"": """ & entityList & """}",
+         
+         // Convert JSON body to binary content
+         bytesBody = Text.ToBinary(jsonBody),
+         
+         // Create request header using API Key
+         headers = [#"APIKey" = #"API Key"],
+         
+         // Invoke REST API using endpoint, header and conte
+         bytesResponse = Web.Contents(endpoint, [Headers=headers, Content=bytesBody]),
+         
+         // Convert to JSON response
+         jsonResponse = Json.Document(bytesResponse),
+         
+         // Store scrubbed text from the JSON response
+         scrubbedText = jsonResponse[scrubbed_text]
+         
+      in scrubbedText
+      ```
+
+### 3. Use the custom function
+Now you can use the custom function to analyze sentiment, extract key phrase and scrub PII data from your text data and store them in a new column in the table.
+
+In Power BI Desktop, in the Query Editor window, switch back to the query which consists your text data. Select the Add Column ribbon. In the General group, click Invoke Custom Function. The Invoke Custom Function dialog appears.
+
+1. Analyze Sentiment  
+   In New column name, enter `Sentiment Score`. In Function query, select the custom function you created, `AnalyzeSentiment`.
+
+   A new field appears in the dialog, `endpoint`. Select the dropdown below endpoint header and select `Text`. Enter the endpoint URL in the field next to dropdown. The `text` field is asking which column we want to use to provide values for the text parameter of the Sentiment Analysis API. Select the column which consists of text data from the drop-down menu.
+
+2. Extract Key Phrase
+   In New column name, enter `Key Phrases`. In Function query, select the custom function you created, `ExtractKeyPhrase`.
+
+   A new field appears in the dialog, `endpoint`. Select the dropdown below endpoint header and select `Text`. Enter the endpoint URL in the field next to dropdown. The `text` field is asking which column we want to use to provide values for the text parameter of the Key Phrase Extraction API. Select the column which consists of text data from the drop-down menu. Enter the following values:
+   - `keyphraseCount`: Count of Key Phrases to return
+   - `diversityThreshold`: Value of Diversity Threshold can be between 0 and 1. More the score, more different/diverse the keyphrases are. Less the score, more duplicate the keyphrases are
+   - `aliasThreshold`: Value of Alias Threshold can be between 0 and 1. Similarity threshold for Alias/Similar Keyphrase with Top Key Phrase [Similar Column in Output]. More the value, more accurate the keyphrases are in top key-phrase [Similar Column in Output]
+
+3. Scrub PII Data
+   In New column name, enter `Scrubbed Data`. In Function query, select the custom function you created, `ScrubPIIData`.
+
+   A new field appears in the dialog, `endpoint`. Select the dropdown below endpoint header and select `Text`. Enter the endpoint URL in the field next to dropdown. The `text` field is asking which column we want to use to provide values for the text parameter of the Scrub PII Data API. Select the column which consists of text data from the drop-down menu. Enter the following:
+   - `entityList`: Comma separated list of entities (Refer to **List of Supported Entities** section above)
+
 ## Limit Tracking in API
 In the free trial subscription, the API Key has a default quota of 500 batch calls. In a single batch call for Sentiment Analysis, you can send maximum 25 documents. Each batch call, irrespective of the how many documents it processes, counts as a single call. For Key Phrase Extraction and PII Scrubber each batch call can send maximum 1 document. 
 
