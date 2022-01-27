@@ -182,6 +182,8 @@ $ response_df = pd.DataFrame(response.json(), columns = ['KeyPhrase','Score','Si
 5. Select **Text** in **Type** dropdown
 6. Enter your **API Key** in the **Current Value** text-box and click on OK
 
+   ![Manage Parameters](images/manage_parameter.png)
+
 ### 3. Define Custom Function
 In Power BI Desktop, make sure you're still in the Query Editor window. If you aren't, select the Home ribbon, and in the **External data** group, click **Edit Queries**.
 
@@ -286,10 +288,15 @@ Now you can use the custom function to analyze sentiment, extract key phrase and
 
 In Power BI Desktop, in the Query Editor window, switch back to the query which consists your text data. Select the Add Column ribbon. In the General group, click Invoke Custom Function. The Invoke Custom Function dialog appears.
 
+![Invoke Custom Function](images/invoke_custom_function.png)
+
 1. Analyze Sentiment  
    In New column name, enter `Sentiment Score`. In Function query, select the custom function you created, `AnalyzeSentiment`.
 
    A new field appears in the dialog, `endpoint`. Select the dropdown below endpoint header and select `Text`. Enter the endpoint URL in the field next to dropdown. The `text` field is asking which column we want to use to provide values for the text parameter of the Sentiment Analysis API. Select the column which consists of text data from the drop-down menu.
+   <br>
+   <br>
+   ![Analyze Sentiment](images/analyze_sentiment.png)
 
 2. Extract Key Phrase
    In New column name, enter `Key Phrases`. In Function query, select the custom function you created, `ExtractKeyPhrase`.
@@ -298,12 +305,18 @@ In Power BI Desktop, in the Query Editor window, switch back to the query which 
    - `keyphraseCount`: Count of Key Phrases to return
    - `diversityThreshold`: Value of Diversity Threshold can be between 0 and 1. More the score, more different/diverse the keyphrases are. Less the score, more duplicate the keyphrases are
    - `aliasThreshold`: Value of Alias Threshold can be between 0 and 1. Similarity threshold for Alias/Similar Keyphrase with Top Key Phrase [Similar Column in Output]. More the value, more accurate the keyphrases are in top key-phrase [Similar Column in Output]
+   <br>
+   <br>
+   ![Extract Key Phrase](images/extract_key_phrase.png)
 
 3. Scrub PII Data
    In New column name, enter `Scrubbed Data`. In Function query, select the custom function you created, `ScrubPIIData`.
 
    A new field appears in the dialog, `endpoint`. Select the dropdown below endpoint header and select `Text`. Enter the endpoint URL in the field next to dropdown. The `text` field is asking which column we want to use to provide values for the text parameter of the Scrub PII Data API. Select the column which consists of text data from the drop-down menu. Enter the following:
    - `entityList`: Comma separated list of entities (Refer to **List of Supported Entities** section above)
+   <br>
+   <br>
+   ![Scrub PII Data](images/scrub_pii_data.png)
 
 ### 4. Authentication and privacy
 After you close the Invoke Custom Function dialog, a banner may appear asking you to specify how to connect to the API. Click Edit Credentials, make sure `Anonymous` is selected in the dialog, then click Connect. If you see the Edit Credentials banner even after choosing anonymous access, you may have forgotten to paste your API Key while creating parameter. Next, a banner may appear asking you to provide information about your data sources privacy. Click **Continue** and choose `Public` for each of the data sources in the dialog. Then click Save.
