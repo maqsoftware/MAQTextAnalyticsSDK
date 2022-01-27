@@ -293,9 +293,7 @@ In Power BI Desktop, in the Query Editor window, switch back to the query which 
 1. Analyze Sentiment  
    In New column name, enter `Sentiment Score`. In Function query, select the custom function you created, `AnalyzeSentiment`.
 
-   A new field appears in the dialog, `endpoint`. Select the dropdown below endpoint header and select `Text`. Enter the endpoint URL in the field next to dropdown. The `text` field is asking which column we want to use to provide values for the text parameter of the Sentiment Analysis API. Select the column which consists of text data from the drop-down menu.
-   <br>
-   <br>
+   A new field appears in the dialog, `endpoint`. Select the dropdown below endpoint header and select `Text`. Enter the endpoint URL in the field next to dropdown. The `text` field is asking which column we want to use to provide values for the text parameter of the Sentiment Analysis API. Select the column which consists of text data from the drop-down menu.  
    ![Analyze Sentiment](images/analyze_sentiment.png)
 
 2. Extract Key Phrase
@@ -304,18 +302,14 @@ In Power BI Desktop, in the Query Editor window, switch back to the query which 
    A new field appears in the dialog, `endpoint`. Select the dropdown below endpoint header and select `Text`. Enter the endpoint URL in the field next to dropdown. The `text` field is asking which column we want to use to provide values for the text parameter of the Key Phrase Extraction API. Select the column which consists of text data from the drop-down menu. Enter the following values:
    - `keyphraseCount`: Count of Key Phrases to return
    - `diversityThreshold`: Value of Diversity Threshold can be between 0 and 1. More the score, more different/diverse the keyphrases are. Less the score, more duplicate the keyphrases are
-   - `aliasThreshold`: Value of Alias Threshold can be between 0 and 1. Similarity threshold for Alias/Similar Keyphrase with Top Key Phrase [Similar Column in Output]. More the value, more accurate the keyphrases are in top key-phrase [Similar Column in Output]
-   <br>
-   <br>
+   - `aliasThreshold`: Value of Alias Threshold can be between 0 and 1. Similarity threshold for Alias/Similar Keyphrase with Top Key Phrase [Similar Column in Output]. More the value, more accurate the keyphrases are in top key-phrase [Similar Column in Output]  
    ![Extract Key Phrase](images/extract_key_phrase.png)
 
 3. Scrub PII Data
    In New column name, enter `Scrubbed Data`. In Function query, select the custom function you created, `ScrubPIIData`.
 
    A new field appears in the dialog, `endpoint`. Select the dropdown below endpoint header and select `Text`. Enter the endpoint URL in the field next to dropdown. The `text` field is asking which column we want to use to provide values for the text parameter of the Scrub PII Data API. Select the column which consists of text data from the drop-down menu. Enter the following:
-   - `entityList`: Comma separated list of entities (Refer to **List of Supported Entities** section above)
-   <br>
-   <br>
+   - `entityList`: Comma separated list of entities (Refer to **List of Supported Entities** section above)  
    ![Scrub PII Data](images/scrub_pii_data.png)
 
 ### 4. Authentication and privacy
