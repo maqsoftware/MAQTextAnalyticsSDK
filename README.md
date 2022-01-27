@@ -189,7 +189,7 @@ Now, in the **Home** ribbon, in the **New Query** group, open the **New Source**
 
 A new query, initially named `Query1`, appears in the Queries list. Double-click this entry and name it `AnalyzeSentiment`.
 
-Now, in the **Home** ribbon, in the **Query** group, click **Advanced Editor** to open the Advanced Editor window. Delete the code that's already in that window and paste in the following code.
+Now, in the **Home** ribbon, in the **Query** group, click **Advanced Editor** to open the Advanced Editor window. Delete the code that's already in that window and paste in the following code. Similarly, define custom functions for the other set of APIs.
 
    1. Analyze Sentiment
       ```FSharp
@@ -304,6 +304,9 @@ In Power BI Desktop, in the Query Editor window, switch back to the query which 
 
    A new field appears in the dialog, `endpoint`. Select the dropdown below endpoint header and select `Text`. Enter the endpoint URL in the field next to dropdown. The `text` field is asking which column we want to use to provide values for the text parameter of the Scrub PII Data API. Select the column which consists of text data from the drop-down menu. Enter the following:
    - `entityList`: Comma separated list of entities (Refer to **List of Supported Entities** section above)
+
+### 4. Authentication and privacy
+After you close the Invoke Custom Function dialog, a banner may appear asking you to specify how to connect to the API. Click Edit Credentials, make sure `Anonymous` is selected in the dialog, then click Connect. If you see the Edit Credentials banner even after choosing anonymous access, you may have forgotten to paste your API Key while creating parameter. Next, a banner may appear asking you to provide information about your data sources privacy. Click **Continue** and choose `Public` for each of the data sources in the dialog. Then click Save.
 
 ## Limit Tracking in API
 In the free trial subscription, the API Key has a default quota of 500 batch calls. In a single batch call for Sentiment Analysis, you can send maximum 25 documents. Each batch call, irrespective of the how many documents it processes, counts as a single call. For Key Phrase Extraction and PII Scrubber each batch call can send maximum 1 document. 
